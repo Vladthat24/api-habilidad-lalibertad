@@ -16,3 +16,24 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(["prefix" => "/v1","middleware"=>"auth"], function () use ($router) {
+
+    $router->group(["prefix" => "/user"], function () use ($router) {
+
+        $router->post('/register', "UserController@createUser");
+        $router->get('/list','UserController@getListUser');
+        $router->put('/{id}','UserController@putUser');
+        $router->get('/{id}','UserController@getUserById');
+        $router->delete('/{id}','UserController@deleteUser');
+        $router->get('/{id}/restore','UserController@restoreUser');
+        
+    });
+    
+});
+
+$router->group(["prefix"=>"/v2","middleware"=>"auth"], function () use ($router){
+    $router->group(["prefix"=>"/consulta"],function () use ($router){
+        $router->post('/pago',"ConsultaController@postConsultaPago");
+    });
+});
