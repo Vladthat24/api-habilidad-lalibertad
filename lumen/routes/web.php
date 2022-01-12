@@ -40,4 +40,9 @@ $router->group(["prefix" => "/v3", "middleware" => "auth"], function () use ($ro
     $router->group(["prefix" => "/consulta"], function () use ($router) {
         $router->get('/habilidad', "ConsultaDriveController@postConsulta");
     });
+    $router->group(["prefix" => "/getConsultaFileGetContents"], function () use ($router) {
+        $router->get('/habilidad', "ConsultaDriveController@getConsulta");
+    });
+
+
 });

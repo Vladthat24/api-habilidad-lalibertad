@@ -22,4 +22,9 @@ class ConsultaDriveController extends Controller
 
         return $this->consultaDriveService->postConsulta();
     }
+    function getConsulta()
+    {
+
+        return $this->consultaDriveService->getConsultaFileGetContents();
+    }
 }
